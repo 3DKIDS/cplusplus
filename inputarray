@@ -1,0 +1,35 @@
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+#include <array>
+
+int main() {
+  int target_number, input_number;
+  std::array<int, 100> inputs;
+  int index = 0;
+
+  srand(time(0));
+  target_number = rand() % 100 + 1;
+
+  while (true) {
+    std::cout << "Enter a number between 1 and 100: ";
+    std::cin >> input_number;
+    inputs[index++] = input_number;
+
+    if (input_number > target_number) {
+      std::cout << "UP" << std::endl;
+    } else if (input_number < target_number) {
+      std::cout << "Down" << std::endl;
+    } else {
+      std::cout << "Correct! The target number was " << target_number << "." << std::endl;
+      std::cout << "You tried the following numbers: ";
+      for (int i = 0; i < index; i++) {
+        std::cout << inputs[i] << " ";
+      }
+      std::cout << std::endl;
+      break;
+    }
+  }
+
+  return 0;
+}
